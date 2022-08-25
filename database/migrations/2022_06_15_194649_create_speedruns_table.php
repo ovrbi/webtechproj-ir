@@ -20,7 +20,8 @@ return new class extends Migration
             $table->time('timetotal');
             $table->integer('damagetaken');
             $table->string('video',100)->nullable();
-            $table->boolean('confirmed');
+            $table->date('posted');
+            $table->foreignId('confirmed_by')->references('id')->on('users')->nullable();
         });
     }
 

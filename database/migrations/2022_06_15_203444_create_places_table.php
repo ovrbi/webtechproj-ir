@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('places', function (Blueprint $table) {
             $table->timestamps();
+            $table->id();
             $table->string('name',32)->unique();
             $table->integer('positions');
         });

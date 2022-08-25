@@ -26,11 +26,11 @@ return new class extends Migration
             $table->time('boss_endtime');
             $table->integer('boss_damagetaken');
             $table->string('item',32);
-            $table->foreign('item')->references('name')->on('items')->nullable();
+            $table->foreign('item')->references('id')->on('items')->nullable();
             $table->string('place',32);
-            $table->foreign('place')->references('name')->on('places');
+            $table->foreign('place')->references('id')->on('places');
             $table->string('boss',32);
-            $table->foreign('boss')->references('name')->on('bosses');
+            $table->foreign('boss')->references('id')->on('bosses');
         });
     }
 

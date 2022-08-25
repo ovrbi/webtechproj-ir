@@ -11,7 +11,7 @@ use App\Models\User;
 class Speedrun extends Model
 {
     use HasFactory;
-    protected $fillable = ['timetotal','damagetaken','video','confirmed'];
+    protected $fillable = ['timetotal','damagetaken','video','confirmed', 'posted'];
 
     public function segment()
     {

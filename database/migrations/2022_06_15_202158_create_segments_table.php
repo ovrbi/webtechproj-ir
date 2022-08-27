@@ -16,21 +16,18 @@ return new class extends Migration
         Schema::create('segments', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->time('starttime');
-            $table->time('endtime');
-            $table->time('itemtime')->nullable();
+            $table->integer('starttime');
+            $table->integer('endtime');
+            $table->integer('itemtime')->nullable();
             $table->integer('damagetaken');
             $table->integer('order');
             $table->foreignId('speedrun_id')->references('id')->on('speedruns')->onDelete('cascade');
-            $table->time('boss_starttime');
-            $table->time('boss_endtime');
+            $table->integer('boss_starttime');
+            $table->integer('boss_endtime');
             $table->integer('boss_damagetaken');
-            $table->string('item',32);
-            $table->foreign('item')->references('id')->on('items')->nullable();
-            $table->string('place',32);
-            $table->foreign('place')->references('id')->on('places');
-            $table->string('boss',32);
-            $table->foreign('boss')->references('id')->on('bosses');
+            $table->foreignId('item')->nullable()->references('id')->on('items');
+            $table->foreignId('place')->references('id')->on('places');
+            $table->foreignId('boss')->references('id')->on('bosses');
         });
     }
 

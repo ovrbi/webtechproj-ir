@@ -17,18 +17,18 @@ class Segment extends Model
 
     public function speedrun()
     {
-        return $this->belongsTo(Speedrun::class);
+        return $this->belongsTo(Speedrun::class, 'speedrun_id', 'id');
     }
     public function item()
     {
-        return $this->belongsTo(Item::class, 'item', 'name');
+        return $this->belongsTo(Item::class, 'item', 'id');
     }
     public function boss()
     {
-        return $this->belongsTo(Boss::class, 'boss', 'name');
+        return $this->belongsTo(Boss::class, 'boss', 'id');
     }
     public function place()
     {
-        return $this->belongsTo(Place::class, 'place', 'name');
+        return $this->belongsTo(Place::class, 'place', 'id');
     }
 }

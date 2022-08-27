@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignId('user_id')->references('id')->on('users');
-            $table->time('timetotal');
+            $table->integer('timetotal');
             $table->integer('damagetaken');
             $table->string('video',100)->nullable();
             $table->date('posted');
-            $table->foreignId('confirmed_by')->references('id')->on('users')->nullable();
+            $table->foreignId('confirmed_by')->nullable()->references('id')->on('users');
         });
     }
 

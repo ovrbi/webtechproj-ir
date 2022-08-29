@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\SpeedrunController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,8 +25,10 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', 
+    [SpeedrunController::class, 'dashboard']
+)->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/speedruns/{id}', [SpeedrunController::class, 'show'])->middleware('auth')->name('speedruns');
 
 require __DIR__.'/auth.php';

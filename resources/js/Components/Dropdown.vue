@@ -58,11 +58,11 @@ const open = ref(false);
             leave-from-class="transform opacity-100 scale-100"
             leave-to-class="transform opacity-0 scale-95">
             <div v-show="open"
-                    class="absolute z-50 mt-2 rounded-md shadow-lg"
+                    class="absolute z-50 mt-2 rounded-md shadow-lg bg-gray-800"
                     :class="[widthClass, alignmentClasses]"
                     style="display: none;"
                     @click="open = false">
-                <div class="rounded-md ring-1 ring-black ring-opacity-5" :class="contentClasses">
+                <div class="rounded-md ring-1 ring-black ring-opacity-5 bg-gray-800 border-gray-600 border" :class="contentClasses">
                     <slot name="content" />
                 </div>
             </div>

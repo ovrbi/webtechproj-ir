@@ -16,19 +16,16 @@ use App\Http\Controllers\SpeedrunController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+Route::get('/', [SpeedrunController::class, 'index'])->name('home');
+Route::get('/users/{id}', [SpeedrunController::class, 'index'])->name('userview');
 
 Route::get('/dashboard', 
     [SpeedrunController::class, 'dashboard']
 )->middleware(['auth', 'verified'])->name('dashboard');
+Route::delete('/speedruns/delete/{id}', [SpeedrunController::class, 'destroy'])->middleware(['auth', 'verified'])->name('speedrun_delete');
+Route::post('/speedruns/change', [SpeedrunController::class, 'update'])->middleware(['auth', 'verified'])->name('speedrun_update');
+Route::put('/speedruns/confirm/{id}', [SpeedrunController::class, 'confirm'])->middleware(['auth', 'verified'])->name('speedrun_confirm');
+Route::get('/speedruns/{id}', [SpeedrunController::class, 'show'])->name('speedruns');
 
-Route::get('/speedruns/{id}', [SpeedrunController::class, 'show'])->middleware('auth')->name('speedruns');
 
 require __DIR__.'/auth.php';

@@ -1,7 +1,6 @@
 <script>
 import BreezeAuthenticatedLayout from '@/Layouts/Ambiguous.vue';
 import { Head } from '@inertiajs/inertia-vue3';
-import SpeedrunVue from './Speedrun/Speedrun.vue';
 import SpeedrunTable from '@/Components/Speedruns/SpeedrunTable.vue';
 
 export default
@@ -9,9 +8,20 @@ export default
     components: {
     BreezeAuthenticatedLayout,
     Head,
-    SpeedrunVue,
     SpeedrunTable,
-},
+    },
+    created: function () 
+        {
+            for (var key in this.errors){
+                alert(key+": "+this.errors[key]);
+            }
+        },
+        updated: function()
+        {
+            for (var key in this.errors){
+                alert(key+": "+this.errors[key]);
+            }
+        },
     props: {
         speedruns:Array,
     },
@@ -19,7 +29,7 @@ export default
 </script>
 
 <template>
-    <Head title="Dashboard" />
+    <Head title="Home" />
 
     <BreezeAuthenticatedLayout>
         
